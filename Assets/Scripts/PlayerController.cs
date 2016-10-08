@@ -4,10 +4,11 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 	public static PlayerController instance;
+
 	public float jumpForce = 6f;
 	public float runningSpeed = 1.5f;
-
 	public Animator animator;
+
 	private Rigidbody2D rigidBody;
 	private Vector3 startingPosition;
 
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
 		this.transform.position = startingPosition;
 	}
 
-	// Update is called once per frame
 	void Update ()
 	{
 		if (GameManager.instance.currentGameState == GameState.inGame) {

@@ -82,8 +82,12 @@
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_WIN
 -define:UNITY_TEAM_LICENSE
+Assets/Scripts/CameraFollow.cs
 Assets/Scripts/GameManager.cs
 Assets/Scripts/KillTrigger.cs
+Assets/Scripts/LeaveTrigger.cs
+Assets/Scripts/LevelGenerator.cs
+Assets/Scripts/LevelPiece.cs
 Assets/Scripts/PlayerController.cs
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
 -r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"

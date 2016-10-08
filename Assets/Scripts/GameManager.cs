@@ -23,27 +23,18 @@ public class GameManager : MonoBehaviour
 		currentGameState = GameState.menu;
 
 	}
-	//called to start the game
+
 	public void StartGame ()
 	{
 		PlayerController.instance.StartGame ();
 		SetGameState (GameState.inGame);
 	}
 
-
-	void Update ()
-	{
-		if (Input.GetButtonDown ("s")) {
-			StartGame ();
-		}
-	}
-
-	//called when player die
 	public void GameOver ()
 	{
 		SetGameState (GameState.gameOver);
 	}
-	//called when player decide to go back to the menu
+
 	public void BackToMenu ()
 	{
 		SetGameState (GameState.menu);
@@ -61,4 +52,10 @@ public class GameManager : MonoBehaviour
 		currentGameState = newGameState;
 	}
 
+	void Update ()
+	{
+		if (Input.GetButtonDown ("s")) {
+			StartGame ();
+		}
+	}
 }
