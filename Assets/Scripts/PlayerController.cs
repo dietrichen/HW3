@@ -3,63 +3,73 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-	public float jumpForce = 10f;
-	private Rigidbody2D rigidBody;
-	public Animator animator;
+	public static PlayerController instance;
+	public float jumpForce = 6f;
 	public float runningSpeed = 1.5f;
 
-	void Start()
+	public Animator animator;
+	private Rigidbody2D rigidBody;
+	private Vector3 startingPosition;
+
+	void Awake ()
 	{
-		animator.SetBool("isAlive", true);
+		instance = this;
+		rigidBody = GetComponent<Rigidbody2D> ();
+		startingPosition = this.transform.position;
 	}
 
-	void Awake()
+	public void StartGame ()
 	{
-		rigidBody = GetComponent<Rigidbody2D>();
-
+		
+		animator.SetBool ("isAlive", true);
+		this.transform.position = startingPosition;
 	}
 
-	void Jump()
+	// Update is called once per frame
+	void Update ()
 	{
-		if (IsGrounded())
-		{
-			rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+		if (GameManager.instance.currentGameState == GameState.inGame) {
+			if (Input.GetMouseButtonDown (0)) {
+				Jump ();
+			}
+			animator.SetBool ("isGrounded", IsGrounded ());
 		}
 	}
 
-	void Update()
+	void FixedUpdate ()
 	{
-		if (Input.GetMouseButtonDown(0))
-		{
-			Jump();}
-		animator.SetBool("isGrounded", IsGrounded());
-	}
-
-	void FixedUpdate()
-	{
-		if (rigidBody.velocity.x < runningSpeed)
-		{
-			rigidBody.velocity = new Vector2(runningSpeed, rigidBody.velocity.y);
+		if (GameManager.instance.currentGameState == GameState.inGame) {
+			if (rigidBody.velocity.x < runningSpeed) {
+				rigidBody.velocity = new Vector2 (runningSpeed,
+					rigidBody.velocity.y);
+			}
 		}
 	}
 
+	void Jump ()
+	{
+		if (IsGrounded ()) {
+			rigidBody.AddForce (Vector2.up * jumpForce, ForceMode2D.Impulse);
+		}
+	}
 
 	public LayerMask groundLayer;
 
-	bool IsGrounded()
+	bool IsGrounded ()
 	{
-		if (Physics2D.Raycast(this.transform.position, Vector2.down, 0.2f, groundLayer.value))
-		{
+		if (Physics2D.Raycast (this.transform.position, Vector2.down, 0.2f,
+			    groundLayer.value)) {
 			return true;
+		} else {
+			return	false;
 		}
-		else 
-		{
-			return false;
-		}
+	}
+
+	public void Kill ()
+	{
+		GameManager.instance.GameOver ();
+		animator.SetBool ("isAlive", false);
 	}
 
 
 }
-
-
-
