@@ -10,18 +10,16 @@ public class PlayerController : MonoBehaviour
 	public Animator animator;
 
 	private Rigidbody2D rigidBody;
-	private Vector3 startingPosition;
+	private Vector3 startingPosition = new Vector3(-8, -2, 0);
 
 	void Awake ()
 	{
 		instance = this;
 		rigidBody = GetComponent<Rigidbody2D> ();
-		startingPosition = this.transform.position;
 	}
 
 	public void StartGame ()
 	{
-		
 		animator.SetBool ("isAlive", true);
 		this.transform.position = startingPosition;
 	}
@@ -69,7 +67,16 @@ public class PlayerController : MonoBehaviour
 	{
 		GameManager.instance.GameOver ();
 		animator.SetBool ("isAlive", false);
+
+		if (PlayerPrefs.GetFloat ("highscore", 0) < this.GetDistance ()) {
+			PlayerPrefs.SetFloat ("highscore", this.GetDistance ());
+		}
 	}
 
+	public float GetDistance ()
+	{
+		float traveledDistance = Vector2.Distance (new Vector2 (startingPosition.x, 0), new Vector2 (this.transform.position.x, 0));
+		return traveledDistance;
+	}
 
 }

@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
 
 	public void GenerateInitialPieces ()
 	{
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 3; i++) {
 			AddPiece ();
 		}
 	}
