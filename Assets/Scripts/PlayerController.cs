@@ -32,8 +32,9 @@ public class PlayerController : MonoBehaviour
 				Jump ();
 			}
 			if (GetDistance () > scoreSpeed) {
-				runningSpeed += .25f;
+				runningSpeed += .33f;
 				scoreSpeed += 25f;
+				jumpForce -= .2f;
 			}
 			animator.SetBool ("isGrounded", IsGrounded ());
 		}
@@ -76,6 +77,11 @@ public class PlayerController : MonoBehaviour
 		if (PlayerPrefs.GetFloat ("highscore", 0) < this.GetDistance ()) {
 			PlayerPrefs.SetFloat ("highscore", this.GetDistance ());
 		}
+	}
+
+	public void Winner ()
+	{
+		GameManager.instance.LevelComplete ();
 	}
 
 	public float GetDistance ()

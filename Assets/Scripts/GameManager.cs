@@ -5,7 +5,8 @@ public enum GameState
 {
 	menu,
 	inGame,
-	gameOver
+	gameOver,
+	levelComplete
 }
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
 	public Canvas menuCanvas;
 	public Canvas inGameCanvas;
 	public Canvas gameOverCanvas;
+	public Canvas levelCompleteCanvas;
 	public int collectedCoins = 0;
 
 	void Awake ()
@@ -43,6 +45,13 @@ public class GameManager : MonoBehaviour
 		SetGameState (GameState.menu);
 	}
 
+	public void LevelComplete()
+	{
+		SetGameState (GameState.levelComplete);
+	}
+
+
+
 	void SetGameState (GameState newGameState)
 	{
 		if (newGameState == GameState.menu) {
@@ -50,24 +59,31 @@ public class GameManager : MonoBehaviour
 			menuCanvas.enabled = true;
 			inGameCanvas.enabled = false;
 			gameOverCanvas.enabled = false;
-		
+			levelCompleteCanvas.enabled = false;
 		}
+
 		if (newGameState == GameState.inGame) {
 			//setup Unity scene for inGame state
 			menuCanvas.enabled = false;
 			inGameCanvas.enabled = true;
 			gameOverCanvas.enabled = false;
-
-		
+			levelCompleteCanvas.enabled = false;
 		}
+
 		if (newGameState == GameState.gameOver) {
 			//setup Unity scene for gameOver state.
 			menuCanvas.enabled = false;
 			inGameCanvas.enabled = false;
 			gameOverCanvas.enabled = true;
-
-
+			levelCompleteCanvas.enabled = false;
 		}
+		if (newGameState == GameState.levelComplete) {
+			menuCanvas.enabled = false;
+			inGameCanvas.enabled = false;
+			gameOverCanvas.enabled = false;
+			levelCompleteCanvas.enabled = true;
+		}
+
 		currentGameState = newGameState;
 	}
 

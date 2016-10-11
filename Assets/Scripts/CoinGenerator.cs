@@ -1,14 +1,13 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class LevelGenerator : MonoBehaviour
-{
+public class CoinGenerator : MonoBehaviour {
 
 	public static LevelGenerator instance;
-	public List<LevelPiece> levelPrefabs = new List<LevelPiece> ();
+	public List<CoinPiece> coinPrefabs = new List<CoinPiece> ();
 	public Transform levelStartPoint;
-	public List<LevelPiece> pieces = new List<LevelPiece> ();
+	public List<CoinPiece> pieces = new List<CoinPiece> ();
 
 	void Awake ()
 	{
@@ -17,25 +16,25 @@ public class LevelGenerator : MonoBehaviour
 
 	void Start ()
 	{
-		GenerateInitialPieces ();
+		GenerateInitialCoins();
 	}
 
 
-	public void GenerateInitialPieces ()
+	public void GenerateInitialCoins ()
 	{
-		for (int i = 0; i < 3; i++) {
-			AddPiece ();
+		for (int i = 0; i < 10; i++) {
+			AddCoin ();
 		}
 	}
 
-	public void AddPiece ()
+	public void AddCoin ()
 	{
 
 		//pick the random number
-		int randomIndex = Random.Range (0, levelPrefabs.Count);
+		int randomIndex = Random.Range (0,coinPrefabs.Count);
 
 		//Instantiate copy of random level prefab and store it in piece variable
-		LevelPiece piece = (LevelPiece)Instantiate (levelPrefabs [randomIndex]);
+		CoinPiece piece = (CoinPiece)Instantiate (coinPrefabs [randomIndex]);
 		piece.transform.SetParent (this.transform, false);
 
 		Vector3 spawnPosition = Vector3.zero;
@@ -58,9 +57,10 @@ public class LevelGenerator : MonoBehaviour
 	public void RemoveOldestPiece ()
 	{
 
-		LevelPiece oldestPiece = pieces [0];
+		CoinPiece oldestPiece = pieces [0];
 
 		pieces.Remove (oldestPiece);
 		Destroy (oldestPiece.gameObject);
 	}
 }
+*/
