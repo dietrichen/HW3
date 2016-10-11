@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce = 6f;
 	public float runningSpeed = 1.5f;
 	public Animator animator;
+	public float scoreSpeed = 25f;
 
 	private Rigidbody2D rigidBody;
-	private Vector3 startingPosition = new Vector3(-8, -2, 0);
+	private Vector3 startingPosition = new Vector3 (0, 0, 0);
 
 	void Awake ()
 	{
@@ -29,6 +30,10 @@ public class PlayerController : MonoBehaviour
 		if (GameManager.instance.currentGameState == GameState.inGame) {
 			if (Input.GetMouseButtonDown (0)) {
 				Jump ();
+			}
+			if (GetDistance () > scoreSpeed) {
+				runningSpeed += .25f;
+				scoreSpeed += 25f;
 			}
 			animator.SetBool ("isGrounded", IsGrounded ());
 		}

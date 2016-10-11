@@ -25,14 +25,12 @@ public class GameManager : MonoBehaviour
 	void Start ()
 	{
 		currentGameState = GameState.menu;
-
 	}
 
 	public void StartGame ()
 	{
 		PlayerController.instance.StartGame ();
-		SetGameState (GameState.inGame);
-	
+		SetGameState (GameState.inGame);	
 	}
 
 	public void GameOver ()

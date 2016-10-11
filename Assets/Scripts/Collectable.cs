@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Collectable : MonoBehaviour
 {
-	bool isCollected;
+	public bool isCollected;
 
 	void Show ()
 	{

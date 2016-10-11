@@ -15,6 +15,7 @@ public class ViewInGame : MonoBehaviour
 			scoreLabel.text = PlayerController.instance.GetDistance ().ToString ("f0");
 			coinLabel.text = GameManager.instance.collectedCoins.ToString ();
 			highScoreLabel.text = PlayerPrefs.GetFloat ("highscore", 0).ToString ("f0");
+		
 		}
 	}
 }
