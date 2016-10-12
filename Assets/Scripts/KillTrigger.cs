@@ -8,6 +8,7 @@ public class KillTrigger : MonoBehaviour
 	{
 		if (other.tag == "Player") {
 			Debug.Log ("dead");
+			PlayerController.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
 			PlayerController.instance.Kill ();
 		}
 	}

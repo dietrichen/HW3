@@ -7,20 +7,23 @@ public class PlayerController : MonoBehaviour
 
 	public float jumpForce = 6f;
 	public float runningSpeed = 1.5f;
+	public float scoreSpeed = 25;
 	public Animator animator;
-	public float scoreSpeed = 25f;
 
 	private Rigidbody2D rigidBody;
-	private Vector3 startingPosition = new Vector3 (0, 0, 0);
+	private Vector3 startingPosition;
 
 	void Awake ()
 	{
+
 		instance = this;
 		rigidBody = GetComponent<Rigidbody2D> ();
+		startingPosition = this.transform.position;
 	}
 
 	public void StartGame ()
 	{
+		PlayerController.instance.GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.None;
 		animator.SetBool ("isAlive", true);
 		this.transform.position = startingPosition;
 	}
@@ -32,10 +35,11 @@ public class PlayerController : MonoBehaviour
 				Jump ();
 			}
 			if (GetDistance () > scoreSpeed) {
-				runningSpeed += .33f;
+				runningSpeed += 1f;
 				scoreSpeed += 25f;
 				jumpForce -= .2f;
 			}
+				
 			animator.SetBool ("isGrounded", IsGrounded ());
 		}
 	}
@@ -79,7 +83,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public void Winner ()
+		public void Winner ()
 	{
 		GameManager.instance.LevelComplete ();
 	}

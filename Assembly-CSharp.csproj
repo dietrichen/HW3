@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CoinGenerator.cs" />
      <Compile Include="Assets\Scripts\Collectable.cs" />
+     <Compile Include="Assets\Scripts\FinishLineTrigger.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\KillTrigger.cs" />
      <Compile Include="Assets\Scripts\LeaveTrigger.cs" />

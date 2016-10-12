@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 	public void StartGame ()
 	{
 		PlayerController.instance.StartGame ();
-		SetGameState (GameState.inGame);	
+		SetGameState (GameState.inGame);
 	}
 
 	public void GameOver ()
@@ -45,12 +45,10 @@ public class GameManager : MonoBehaviour
 		SetGameState (GameState.menu);
 	}
 
-	public void LevelComplete()
+	public void LevelComplete ()
 	{
 		SetGameState (GameState.levelComplete);
 	}
-
-
 
 	void SetGameState (GameState newGameState)
 	{
@@ -77,6 +75,7 @@ public class GameManager : MonoBehaviour
 			gameOverCanvas.enabled = true;
 			levelCompleteCanvas.enabled = false;
 		}
+
 		if (newGameState == GameState.levelComplete) {
 			menuCanvas.enabled = false;
 			inGameCanvas.enabled = false;
