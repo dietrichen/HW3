@@ -58,7 +58,7 @@ public class LevelGenerator : MonoBehaviour
 
 	public void AddFinish ()
 	{
-		LevelPiece piece = (LevelPiece)Instantiate (levelPrefabs [2]);
+		LevelPiece piece = (LevelPiece)Instantiate (levelPrefabs [3]);
 		piece.transform.SetParent (this.transform, false);
 
 		Vector3 spawnPosition = Vector3.zero;

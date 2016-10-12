@@ -9,7 +9,6 @@ public class FinishLineTrigger : MonoBehaviour
 			Debug.Log ("FinishLine");
 			PlayerController.instance.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
 			PlayerController.instance.Winner ();
-			LevelGenerator.instance.RemoveLevel ();
 		}
 	}
 }
