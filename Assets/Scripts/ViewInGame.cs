@@ -1,7 +1,13 @@
-﻿using UnityEngine;
+﻿/*Eugene Dietrich
+ * CSC496
+ * HW3
+ * 10/11/2016
+ */
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
+//per the book
 public class ViewInGame : MonoBehaviour
 {
 

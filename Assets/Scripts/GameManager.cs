@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*Eugene Dietrich
+ * CSC496
+ * HW3
+ * 10/11/2016
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public enum GameState
@@ -44,10 +50,14 @@ public class GameManager : MonoBehaviour
 	{
 		SetGameState (GameState.menu);
 	}
-
+	 
+	//keeps the game moving and generating new levels
 	public void LevelComplete ()
 	{
 		SetGameState (GameState.levelComplete);
+		LevelGenerator.instance.RemoveLevel();
+		LevelGenerator.instance.Start();
+
 	}
 
 	void SetGameState (GameState newGameState)
@@ -75,7 +85,7 @@ public class GameManager : MonoBehaviour
 			gameOverCanvas.enabled = true;
 			levelCompleteCanvas.enabled = false;
 		}
-
+		//added this to display the level completed canvas
 		if (newGameState == GameState.levelComplete) {
 			menuCanvas.enabled = false;
 			inGameCanvas.enabled = false;

@@ -1,11 +1,17 @@
-﻿using UnityEngine;
+﻿/*Eugene Dietrich
+ * CSC496
+ * HW3
+ * 10/11/2016
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
 	public static PlayerController instance;
 
-	public float level;
+	public int level;
 	public float jumpForce = 6f;
 	public float runningSpeed;
 	public float scoreSpeed;
@@ -22,6 +28,7 @@ public class PlayerController : MonoBehaviour
 		startingPosition = this.transform.position;
 	}
 
+
 	public void StartGame()
 	{
 
@@ -32,6 +39,8 @@ public class PlayerController : MonoBehaviour
 		scoreSpeed = 25;
 	}
 
+	//added super jump here, right mouse click
+	//added modifiers that can be adjust with level
 	void Update()
 	{
 		if (GameManager.instance.currentGameState == GameState.inGame)
@@ -77,6 +86,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	//superjump, simple method that doubles the jumpforce
 	void SuperJump()
 	{
 		if (IsGrounded())
@@ -110,10 +120,12 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	//winner method to call when the level is complete
 	public void Winner()
 	{
-		GameManager.instance.LevelComplete();
 		level++;
+		GameManager.instance.LevelComplete();
+
 	}
 
 	public float GetDistance()
@@ -122,7 +134,8 @@ public class PlayerController : MonoBehaviour
 		return traveledDistance;
 	}
 
-	public float GetLevel()
+	//get method so level can be used in other classes
+	public int GetLevel()
 	{
 		return level;
 	}

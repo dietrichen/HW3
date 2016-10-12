@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*Eugene Dietrich
+ * CSC496
+ * HW3
+ * 10/11/2016
+ */
+//from the book
+using UnityEngine;
 using System.Collections;
 
 public class Collectable : MonoBehaviour

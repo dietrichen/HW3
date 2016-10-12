@@ -6,12 +6,6 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="HW3 Status">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="127" Column="16" />
-      <File FileName="Assets\Scripts\LeaveTrigger.cs" Line="15" Column="41" />
-      <File FileName="Assets\Scripts\KillTrigger.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelPiece.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ViewInGame.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="50" Column="1" />
       <File FileName="HW3 Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
